@@ -8,5 +8,5 @@
 
 Note: AMNet fork with modifications - https://github.com/atotev/AMNet
 
-#### Example: Attention Maps Signal
+#### Attention Maps Signal Example
 ![](att_maps-video10001.gif)
