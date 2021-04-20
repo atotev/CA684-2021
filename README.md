@@ -7,3 +7,6 @@
 `docker run --gpus all --shm-size 8G -it -v /src/AMNet:/C684_Assignment nvcr.io/nvidia/pytorch:20.12-py3`
 
 Note: AMNet fork with modifications - https://github.com/atotev/AMNet
+
+#### Example: Attention Maps Signal
+![](att_maps-video10001.gif)
