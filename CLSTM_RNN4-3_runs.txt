@@ -1,0 +1,1106 @@
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+Model: "model"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_1 (InputLayer)            [(None, 4, 70, 70, 9 0                                            
+__________________________________________________________________________________________________
+conv_lst_m2d (ConvLSTM2D)       (None, 4, 70, 70, 20 20960       input_1[0][0]                    
+__________________________________________________________________________________________________
+max_pooling3d (MaxPooling3D)    (None, 4, 35, 35, 20 0           conv_lst_m2d[0][0]               
+__________________________________________________________________________________________________
+conv_lst_m2d_1 (ConvLSTM2D)     (None, 4, 35, 35, 10 10840       max_pooling3d[0][0]              
+__________________________________________________________________________________________________
+max_pooling3d_1 (MaxPooling3D)  (None, 4, 12, 12, 10 0           conv_lst_m2d_1[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_2 (ConvLSTM2D)     (None, 4, 12, 12, 5) 2720        max_pooling3d_1[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_2 (MaxPooling3D)  (None, 4, 6, 6, 5)   0           conv_lst_m2d_2[0][0]             
+__________________________________________________________________________________________________
+time_distributed (TimeDistribut (None, 4, 180)       0           max_pooling3d_2[0][0]            
+__________________________________________________________________________________________________
+time_distributed_1 (TimeDistrib (None, 4, 512)       92672       time_distributed[0][0]           
+__________________________________________________________________________________________________
+input_2 (InputLayer)            [(None, 4, 1)]       0                                            
+__________________________________________________________________________________________________
+time_distributed_2 (TimeDistrib (None, 4, 512)       0           time_distributed_1[0][0]         
+__________________________________________________________________________________________________
+lstm (LSTM)                     (None, 4, 32)        4352        input_2[0][0]                    
+__________________________________________________________________________________________________
+time_distributed_3 (TimeDistrib (None, 4, 64)        32832       time_distributed_2[0][0]         
+__________________________________________________________________________________________________
+lstm_1 (LSTM)                   (None, 4, 32)        8320        lstm[0][0]                       
+__________________________________________________________________________________________________
+flatten_1 (Flatten)             (None, 256)          0           time_distributed_3[0][0]         
+__________________________________________________________________________________________________
+flatten_2 (Flatten)             (None, 128)          0           lstm_1[0][0]                     
+__________________________________________________________________________________________________
+dense_2 (Dense)                 (None, 128)          32896       flatten_1[0][0]                  
+__________________________________________________________________________________________________
+dense_3 (Dense)                 (None, 128)          16512       flatten_2[0][0]                  
+__________________________________________________________________________________________________
+average (Average)               (None, 128)          0           dense_2[0][0]                    
+                                                                 dense_3[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization (BatchNorma (None, 128)          512         average[0][0]                    
+__________________________________________________________________________________________________
+dense_4 (Dense)                 (None, 64)           8256        batch_normalization[0][0]        
+__________________________________________________________________________________________________
+dense_5 (Dense)                 (None, 1)            65          dense_4[0][0]                    
+==================================================================================================
+Total params: 230,937
+Trainable params: 230,681
+Non-trainable params: 256
+__________________________________________________________________________________________________
+None
+Epoch 1/20
+157/159 [============================>.] - ETA: 0s - loss: 0.0477WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 114s 381ms/step - loss: 0.0472
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 1: Spearman's correlation = 0.4131
+*** Epoch 1: MSE = 0.0061
+
+
+Epoch 2/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0062WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 97s 610ms/step - loss: 0.0062
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 1: Spearman's correlation = 0.4131
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 2: Spearman's correlation = 0.4281
+*** Epoch 2: MSE = 0.0057
+
+
+Epoch 3/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0061WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 83s 525ms/step - loss: 0.0061
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 3: Spearman's correlation = 0.4377
+*** Epoch 3: MSE = 0.0055
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4377-25_04_2021_20_54-0-3.hdf5
+
+Epoch 4/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0061WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 83s 524ms/step - loss: 0.0061
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 4: Spearman's correlation = 0.4345
+*** Epoch 4: MSE = 0.0059
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4345-25_04_2021_20_54-0-4.hdf5
+
+Epoch 5/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 552ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 5: Spearman's correlation = 0.4368
+*** Epoch 5: MSE = 0.0057
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4368-25_04_2021_20_54-0-5.hdf5
+
+Epoch 6/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 550ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4196
+*** Epoch 6: MSE = 0.0051
+
+
+Epoch 7/20
+158/159 [============================>.] - ETA: 0s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 567ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4196
+*** Epoch 6: MSE = 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4337
+*** Epoch 7: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4337-25_04_2021_20_54-0-7.hdf5
+
+Epoch 8/20
+158/159 [============================>.] - ETA: 0s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 555ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4337WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 8: Spearman's correlation = 0.4361
+*** Epoch 8: MSE = 0.0082
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4361-25_04_2021_20_54-0-8.hdf5
+
+Epoch 9/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 94s 593ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 9: Spearman's correlation = 0.4324
+*** Epoch 9: MSE = 0.0135
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4324-25_04_2021_20_54-0-9.hdf5
+
+Epoch 10/20
+158/159 [============================>.] - ETA: 0s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 564ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 10: Spearman's correlation = 0.4319
+*** Epoch 10: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4319-25_04_2021_20_54-0-10.hdf5
+
+Epoch 11/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 577ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: Spearman's correlation = 0.4206
+*** Epoch 11: MSE = 0.0049
+
+
+Epoch 12/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 542ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: Spearman's correlation = 0.4206
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4376
+*** Epoch 12: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4376-25_04_2021_20_54-0-12.hdf5
+
+Epoch 13/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 556ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 12: Spearman's correlation = 0.4376
+*** Epoch 12: MSE = 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.4105
+*** Epoch 13: MSE = 0.0050
+
+
+Epoch 14/20
+158/159 [============================>.] - ETA: 0s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 560ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.4105
+*** Epoch 13: MSE = 0.0050
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 14: Spearman's correlation = 0.4287
+*** Epoch 14: MSE = 0.0049
+
+
+Epoch 15/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 560ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 15: Spearman's correlation = 0.4374
+*** Epoch 15: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4374-25_04_2021_20_54-0-15.hdf5
+
+Epoch 16/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0050WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 91s 572ms/step - loss: 0.0050
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 16: Spearman's correlation = 0.4002
+*** Epoch 16: MSE = 0.0050
+
+
+Epoch 17/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 565ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 17: Spearman's correlation = 0.4199
+*** Epoch 17: MSE = 0.0051
+
+
+Epoch 18/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 554ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 17: Spearman's correlation = 0.4199
+*** Epoch 17: MSE = 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 18: Spearman's correlation = 0.4324
+*** Epoch 18: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4324-25_04_2021_20_54-0-18.hdf5
+
+Epoch 19/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0049WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 579ms/step - loss: 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 19: Spearman's correlation = 0.3813
+*** Epoch 19: MSE = 0.0058
+
+
+Epoch 20/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0046WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 544ms/step - loss: 0.0046
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 20: Spearman's correlation = 0.3968
+*** Epoch 20: MSE = 0.0052
+
+
+Model: "model_1"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_3 (InputLayer)            [(None, 4, 70, 70, 9 0                                            
+__________________________________________________________________________________________________
+conv_lst_m2d_3 (ConvLSTM2D)     (None, 4, 70, 70, 20 20960       input_3[0][0]                    
+__________________________________________________________________________________________________
+max_pooling3d_3 (MaxPooling3D)  (None, 4, 35, 35, 20 0           conv_lst_m2d_3[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_4 (ConvLSTM2D)     (None, 4, 35, 35, 10 10840       max_pooling3d_3[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_4 (MaxPooling3D)  (None, 4, 12, 12, 10 0           conv_lst_m2d_4[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_5 (ConvLSTM2D)     (None, 4, 12, 12, 5) 2720        max_pooling3d_4[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_5 (MaxPooling3D)  (None, 4, 6, 6, 5)   0           conv_lst_m2d_5[0][0]             
+__________________________________________________________________________________________________
+time_distributed_4 (TimeDistrib (None, 4, 180)       0           max_pooling3d_5[0][0]            
+__________________________________________________________________________________________________
+time_distributed_5 (TimeDistrib (None, 4, 512)       92672       time_distributed_4[0][0]         
+__________________________________________________________________________________________________
+input_4 (InputLayer)            [(None, 4, 1)]       0                                            
+__________________________________________________________________________________________________
+time_distributed_6 (TimeDistrib (None, 4, 512)       0           time_distributed_5[0][0]         
+__________________________________________________________________________________________________
+lstm_2 (LSTM)                   (None, 4, 32)        4352        input_4[0][0]                    
+__________________________________________________________________________________________________
+time_distributed_7 (TimeDistrib (None, 4, 64)        32832       time_distributed_6[0][0]         
+__________________________________________________________________________________________________
+lstm_3 (LSTM)                   (None, 4, 32)        8320        lstm_2[0][0]                     
+__________________________________________________________________________________________________
+flatten_4 (Flatten)             (None, 256)          0           time_distributed_7[0][0]         
+__________________________________________________________________________________________________
+flatten_5 (Flatten)             (None, 128)          0           lstm_3[0][0]                     
+__________________________________________________________________________________________________
+dense_8 (Dense)                 (None, 128)          32896       flatten_4[0][0]                  
+__________________________________________________________________________________________________
+dense_9 (Dense)                 (None, 128)          16512       flatten_5[0][0]                  
+__________________________________________________________________________________________________
+average_1 (Average)             (None, 128)          0           dense_8[0][0]                    
+                                                                 dense_9[0][0]                    
+__________________________________________________________________________________________________
+batch_normalization_1 (BatchNor (None, 128)          512         average_1[0][0]                  
+__________________________________________________________________________________________________
+dense_10 (Dense)                (None, 64)           8256        batch_normalization_1[0][0]      
+__________________________________________________________________________________________________
+dense_11 (Dense)                (None, 1)            65          dense_10[0][0]                   
+==================================================================================================
+Total params: 230,937
+Trainable params: 230,681
+Non-trainable params: 256
+__________________________________________________________________________________________________
+None
+Epoch 1/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0449WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 107s 395ms/step - loss: 0.0442
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 1: Spearman's correlation = 0.4169
+*** Epoch 1: MSE = 0.0061
+
+
+Epoch 2/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0064WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 558ms/step - loss: 0.0064
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 2: Spearman's correlation = 0.4271
+*** Epoch 2: MSE = 0.0059
+
+
+Epoch 3/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 561ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 2: Spearman's correlation = 0.4271
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 3: Spearman's correlation = 0.4260
+*** Epoch 3: MSE = 0.0057
+
+
+Epoch 4/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0059WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 100s 630ms/step - loss: 0.0059
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 4: Spearman's correlation = 0.4280
+*** Epoch 4: MSE = 0.0051
+
+
+Epoch 5/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 563ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 5: Spearman's correlation = 0.4306
+*** Epoch 5: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4306-25_04_2021_21_35-1-5.hdf5
+
+Epoch 6/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 93s 585ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4317
+*** Epoch 6: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4317-25_04_2021_21_35-1-6.hdf5
+
+Epoch 7/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 543ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4172
+*** Epoch 7: MSE = 0.0049
+
+
+Epoch 8/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 568ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4172
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 8: Spearman's correlation = 0.4269
+*** Epoch 8: MSE = 0.0061
+
+
+Epoch 9/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0060WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 85s 533ms/step - loss: 0.0060
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 9: Spearman's correlation = 0.4358
+*** Epoch 9: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4358-25_04_2021_21_35-1-9.hdf5
+
+Epoch 10/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 542ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 10: Spearman's correlation = 0.4262
+*** Epoch 10: MSE = 0.0060
+
+
+Epoch 11/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0059WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 95s 596ms/step - loss: 0.0059
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: Spearman's correlation = 0.4212
+*** Epoch 11: MSE = 0.0050
+
+
+Epoch 12/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 561ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4295
+*** Epoch 12: MSE = 0.0048
+
+
+Epoch 13/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 566ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4295
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.4249
+*** Epoch 13: MSE = 0.0049
+
+
+Epoch 14/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 556ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: MSE = 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 14: Spearman's correlation = 0.4230
+*** Epoch 14: MSE = 0.0049
+
+
+Epoch 15/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 94s 593ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 15: Spearman's correlation = 0.4280
+*** Epoch 15: MSE = 0.0049
+
+
+Epoch 16/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 560ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 15: MSE = 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 16: Spearman's correlation = 0.3709
+*** Epoch 16: MSE = 0.0053
+
+
+Epoch 17/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 91s 571ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 16: MSE = 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 17: Spearman's correlation = 0.4275
+*** Epoch 17: MSE = 0.0054
+
+
+Epoch 18/20
+157/159 [============================>.] - ETA: 1s - loss: 0.0050WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 578ms/step - loss: 0.0050
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 17: Spearman's correlation = 0.4275
+*** Epoch 17: MSE = 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 18: Spearman's correlation = 0.4158
+*** Epoch 18: MSE = 0.0051
+
+
+Epoch 19/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0047WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 84s 530ms/step - loss: 0.0047
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 19: Spearman's correlation = 0.4203
+*** Epoch 19: MSE = 0.0059
+
+
+Epoch 20/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0049WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 567ms/step - loss: 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 20: Spearman's correlation = 0.3997
+*** Epoch 20: MSE = 0.0060
+
+
+Model: "model_2"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_5 (InputLayer)            [(None, 4, 70, 70, 9 0                                            
+__________________________________________________________________________________________________
+conv_lst_m2d_6 (ConvLSTM2D)     (None, 4, 70, 70, 20 20960       input_5[0][0]                    
+__________________________________________________________________________________________________
+max_pooling3d_6 (MaxPooling3D)  (None, 4, 35, 35, 20 0           conv_lst_m2d_6[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_7 (ConvLSTM2D)     (None, 4, 35, 35, 10 10840       max_pooling3d_6[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_7 (MaxPooling3D)  (None, 4, 12, 12, 10 0           conv_lst_m2d_7[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_8 (ConvLSTM2D)     (None, 4, 12, 12, 5) 2720        max_pooling3d_7[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_8 (MaxPooling3D)  (None, 4, 6, 6, 5)   0           conv_lst_m2d_8[0][0]             
+__________________________________________________________________________________________________
+time_distributed_8 (TimeDistrib (None, 4, 180)       0           max_pooling3d_8[0][0]            
+__________________________________________________________________________________________________
+time_distributed_9 (TimeDistrib (None, 4, 512)       92672       time_distributed_8[0][0]         
+__________________________________________________________________________________________________
+input_6 (InputLayer)            [(None, 4, 1)]       0                                            
+__________________________________________________________________________________________________
+time_distributed_10 (TimeDistri (None, 4, 512)       0           time_distributed_9[0][0]         
+__________________________________________________________________________________________________
+lstm_4 (LSTM)                   (None, 4, 32)        4352        input_6[0][0]                    
+__________________________________________________________________________________________________
+time_distributed_11 (TimeDistri (None, 4, 64)        32832       time_distributed_10[0][0]        
+__________________________________________________________________________________________________
+lstm_5 (LSTM)                   (None, 4, 32)        8320        lstm_4[0][0]                     
+__________________________________________________________________________________________________
+flatten_7 (Flatten)             (None, 256)          0           time_distributed_11[0][0]        
+__________________________________________________________________________________________________
+flatten_8 (Flatten)             (None, 128)          0           lstm_5[0][0]                     
+__________________________________________________________________________________________________
+dense_14 (Dense)                (None, 128)          32896       flatten_7[0][0]                  
+__________________________________________________________________________________________________
+dense_15 (Dense)                (None, 128)          16512       flatten_8[0][0]                  
+__________________________________________________________________________________________________
+average_2 (Average)             (None, 128)          0           dense_14[0][0]                   
+                                                                 dense_15[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_2 (BatchNor (None, 128)          512         average_2[0][0]                  
+__________________________________________________________________________________________________
+dense_16 (Dense)                (None, 64)           8256        batch_normalization_2[0][0]      
+__________________________________________________________________________________________________
+dense_17 (Dense)                (None, 1)            65          dense_16[0][0]                   
+==================================================================================================
+Total params: 230,937
+Trainable params: 230,681
+Non-trainable params: 256
+__________________________________________________________________________________________________
+None
+Epoch 1/20
+155/159 [============================>.] - ETA: 1s - loss: 0.0471WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 106s 388ms/step - loss: 0.0463
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 20: Spearman's correlation = 0.3997WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 1: Spearman's correlation = 0.4296
+*** Epoch 1: MSE = 0.0061
+
+
+Epoch 2/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0060WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 538ms/step - loss: 0.0060
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 2: Spearman's correlation = 0.4194
+*** Epoch 2: MSE = 0.0058
+
+
+Epoch 3/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0062WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 91s 569ms/step - loss: 0.0062
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 3: Spearman's correlation = 0.4146
+*** Epoch 3: MSE = 0.0060
+
+
+Epoch 4/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 547ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 4: Spearman's correlation = 0.4281
+*** Epoch 4: MSE = 0.0056
+
+
+Epoch 5/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 91s 574ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 4: Spearman's correlation = 0.4281
+*** Epoch 4: MSE = 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 5: Spearman's correlation = 0.4285
+*** Epoch 5: MSE = 0.0049
+
+
+Epoch 6/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 575ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4322
+*** Epoch 6: MSE = 0.0051
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4322-25_04_2021_22_17-2-6.hdf5
+
+Epoch 7/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0059WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 539ms/step - loss: 0.0059
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4229
+*** Epoch 7: MSE = 0.0067
+
+
+Epoch 8/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 568ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 8: Spearman's correlation = 0.4278
+*** Epoch 8: MSE = 0.0055
+
+
+Epoch 9/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 553ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 9: Spearman's correlation = 0.4313
+*** Epoch 9: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4313-25_04_2021_22_17-2-9.hdf5
+
+Epoch 10/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 85s 535ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 9: MSE = 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 10: Spearman's correlation = 0.4358
+*** Epoch 10: MSE = 0.0060
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4358-25_04_2021_22_17-2-10.hdf5
+
+Epoch 11/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 563ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: Spearman's correlation = 0.4249
+*** Epoch 11: MSE = 0.0052
+
+
+Epoch 12/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 552ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4356
+*** Epoch 12: MSE = 0.0057
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4356-25_04_2021_22_17-2-12.hdf5
+
+Epoch 13/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 91s 572ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.4341
+*** Epoch 13: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4341-25_04_2021_22_17-2-13.hdf5
+
+Epoch 14/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 558ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 13: MSE = 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 14: Spearman's correlation = 0.4323
+*** Epoch 14: MSE = 0.0053
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4323-25_04_2021_22_17-2-14.hdf5
+
+Epoch 15/20
+156/159 [============================>.] - ETA: 1s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 579ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 14: Spearman's correlation = 0.4323
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 15: Spearman's correlation = 0.4200
+*** Epoch 15: MSE = 0.0049
+
+
+Epoch 16/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 94s 591ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+
+*** Epoch 15: Spearman's correlation = 0.4200
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 16: Spearman's correlation = 0.4311
+*** Epoch 16: MSE = 0.0053
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4311-25_04_2021_22_17-2-16.hdf5
+
+Epoch 17/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0054WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 541ms/step - loss: 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 16: MSE = 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 17: Spearman's correlation = 0.4234
+*** Epoch 17: MSE = 0.0049
+
+
+Epoch 18/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 557ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 17: MSE = 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 18: Spearman's correlation = 0.4226
+*** Epoch 18: MSE = 0.0053
+
+
+Epoch 19/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0051WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 548ms/step - loss: 0.0051
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 19: Spearman's correlation = 0.4418
+*** Epoch 19: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4418-25_04_2021_22_17-2-19.hdf5
+
+Epoch 20/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0048WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 546ms/step - loss: 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+*** Epoch 19: MSE = 0.0049
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 20: Spearman's correlation = 0.3935
+*** Epoch 20: MSE = 0.0052
+
+
+Model: "model_3"
+__________________________________________________________________________________________________
+Layer (type)                    Output Shape         Param #     Connected to                     
+==================================================================================================
+input_7 (InputLayer)            [(None, 4, 70, 70, 9 0                                            
+__________________________________________________________________________________________________
+conv_lst_m2d_9 (ConvLSTM2D)     (None, 4, 70, 70, 20 20960       input_7[0][0]                    
+__________________________________________________________________________________________________
+max_pooling3d_9 (MaxPooling3D)  (None, 4, 35, 35, 20 0           conv_lst_m2d_9[0][0]             
+__________________________________________________________________________________________________
+conv_lst_m2d_10 (ConvLSTM2D)    (None, 4, 35, 35, 10 10840       max_pooling3d_9[0][0]            
+__________________________________________________________________________________________________
+max_pooling3d_10 (MaxPooling3D) (None, 4, 12, 12, 10 0           conv_lst_m2d_10[0][0]            
+__________________________________________________________________________________________________
+conv_lst_m2d_11 (ConvLSTM2D)    (None, 4, 12, 12, 5) 2720        max_pooling3d_10[0][0]           
+__________________________________________________________________________________________________
+max_pooling3d_11 (MaxPooling3D) (None, 4, 6, 6, 5)   0           conv_lst_m2d_11[0][0]            
+__________________________________________________________________________________________________
+time_distributed_12 (TimeDistri (None, 4, 180)       0           max_pooling3d_11[0][0]           
+__________________________________________________________________________________________________
+time_distributed_13 (TimeDistri (None, 4, 512)       92672       time_distributed_12[0][0]        
+__________________________________________________________________________________________________
+input_8 (InputLayer)            [(None, 4, 1)]       0                                            
+__________________________________________________________________________________________________
+time_distributed_14 (TimeDistri (None, 4, 512)       0           time_distributed_13[0][0]        
+__________________________________________________________________________________________________
+lstm_6 (LSTM)                   (None, 4, 32)        4352        input_8[0][0]                    
+__________________________________________________________________________________________________
+time_distributed_15 (TimeDistri (None, 4, 64)        32832       time_distributed_14[0][0]        
+__________________________________________________________________________________________________
+lstm_7 (LSTM)                   (None, 4, 32)        8320        lstm_6[0][0]                     
+__________________________________________________________________________________________________
+flatten_10 (Flatten)            (None, 256)          0           time_distributed_15[0][0]        
+__________________________________________________________________________________________________
+flatten_11 (Flatten)            (None, 128)          0           lstm_7[0][0]                     
+__________________________________________________________________________________________________
+dense_20 (Dense)                (None, 128)          32896       flatten_10[0][0]                 
+__________________________________________________________________________________________________
+dense_21 (Dense)                (None, 128)          16512       flatten_11[0][0]                 
+__________________________________________________________________________________________________
+average_3 (Average)             (None, 128)          0           dense_20[0][0]                   
+                                                                 dense_21[0][0]                   
+__________________________________________________________________________________________________
+batch_normalization_3 (BatchNor (None, 128)          512         average_3[0][0]                  
+__________________________________________________________________________________________________
+dense_22 (Dense)                (None, 64)           8256        batch_normalization_3[0][0]      
+__________________________________________________________________________________________________
+dense_23 (Dense)                (None, 1)            65          dense_22[0][0]                   
+==================================================================================================
+Total params: 230,937
+Trainable params: 230,681
+Non-trainable params: 256
+__________________________________________________________________________________________________
+None
+Epoch 1/20
+154/159 [============================>.] - ETA: 1s - loss: 0.0452WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 106s 377ms/step - loss: 0.0442
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 1: Spearman's correlation = 0.4253
+*** Epoch 1: MSE = 0.0059
+
+
+Epoch 2/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0060WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 549ms/step - loss: 0.0060
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 2: Spearman's correlation = 0.4289
+*** Epoch 2: MSE = 0.0059
+
+
+Epoch 3/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0060WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 577ms/step - loss: 0.0060
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 3: Spearman's correlation = 0.4277
+*** Epoch 3: MSE = 0.0056
+
+
+Epoch 4/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0061WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 546ms/step - loss: 0.0061
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 4: Spearman's correlation = 0.4291
+*** Epoch 4: MSE = 0.0054
+
+
+Epoch 5/20
+154/159 [============================>.] - ETA: 3s - loss: 0.0058WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 103s 651ms/step - loss: 0.0058
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 5: Spearman's correlation = 0.4243
+*** Epoch 5: MSE = 0.0053
+
+
+Epoch 6/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 106s 665ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 5: Spearman's correlation = 0.4243
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4247
+*** Epoch 6: MSE = 0.0053
+
+
+Epoch 7/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0056WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 96s 601ms/step - loss: 0.0056
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 6: Spearman's correlation = 0.4247
+*** Epoch 6: MSE = 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4282
+*** Epoch 7: MSE = 0.0049
+
+
+Epoch 8/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 92s 576ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 7: Spearman's correlation = 0.4282WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 8: Spearman's correlation = 0.4345
+*** Epoch 8: MSE = 0.0049
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4345-25_04_2021_22_58-3-8.hdf5
+
+Epoch 9/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 552ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 9: Spearman's correlation = 0.4335
+*** Epoch 9: MSE = 0.0062
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4335-25_04_2021_22_58-3-9.hdf5
+
+Epoch 10/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0052WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 85s 536ms/step - loss: 0.0052
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 10: Spearman's correlation = 0.4304
+*** Epoch 10: MSE = 0.0048
+
+*** Saving model to file /workspace/C684_Assignment/training/chkp/weights-0.4304-25_04_2021_22_58-3-10.hdf5
+
+Epoch 11/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0055WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 90s 567ms/step - loss: 0.0055
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: Spearman's correlation = 0.4221
+*** Epoch 11: MSE = 0.0054
+
+
+Epoch 12/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0057WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 552ms/step - loss: 0.0057
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 11: MSE = 0.0054
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4238
+*** Epoch 12: MSE = 0.0053
+
+
+Epoch 13/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0050WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 550ms/step - loss: 0.0050
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 12: Spearman's correlation = 0.4238
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.3594
+*** Epoch 13: MSE = 0.0073
+
+
+Epoch 14/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0052WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 551ms/step - loss: 0.0052
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 13: Spearman's correlation = 0.3594WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 14: Spearman's correlation = 0.3925
+*** Epoch 14: MSE = 0.0070
+
+
+Epoch 15/20
+154/159 [============================>.] - ETA: 2s - loss: 0.0052WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 547ms/step - loss: 0.0052
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 15: Spearman's correlation = 0.4151
+*** Epoch 15: MSE = 0.0049
+
+
+Epoch 16/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0053WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 549ms/step - loss: 0.0053
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 15: Spearman's correlation = 0.4151
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 16: Spearman's correlation = 0.3748
+*** Epoch 16: MSE = 0.0057
+
+
+Epoch 17/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0048WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 88s 553ms/step - loss: 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 17: Spearman's correlation = 0.4130
+*** Epoch 17: MSE = 0.0052
+
+
+Epoch 18/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0048WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 87s 547ms/step - loss: 0.0048
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 18: Spearman's correlation = 0.3697
+*** Epoch 18: MSE = 0.0060
+
+
+Epoch 19/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0047WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 89s 560ms/step - loss: 0.0047
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 18: Spearman's correlation = 0.3697
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 19: Spearman's correlation = 0.3700
+*** Epoch 19: MSE = 0.0058
+
+
+Epoch 20/20
+155/159 [============================>.] - ETA: 2s - loss: 0.0044WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+159/159 [==============================] - 86s 538ms/step - loss: 0.0044
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+WARNING:tensorflow:multiprocessing can interact badly with TensorFlow, causing nondeterministic deadlocks. For high performance data pipelines tf.data is recommended.
+
+*** Epoch 20: Spearman's correlation = 0.3830
+*** Epoch 20: MSE = 0.0056
+
+
